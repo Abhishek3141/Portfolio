@@ -7,6 +7,8 @@ import { PROJECTS_DATA } from "@/lib/data"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
+import Image from "next/image"
+
 export default function HomePage() {
     const featuredProjects = PROJECTS_DATA.filter(p => ['cogent', 'ftc-robotics', 'athlynk'].includes(p.slug))
     const [expandedProject, setExpandedProject] = useState<string | null>(null)
@@ -14,43 +16,64 @@ export default function HomePage() {
     return (
         <div className="space-y-16 pb-16">
             {/* Hero Section */}
-            <section className="flex flex-col items-start gap-6 py-12 md:py-20">
-                <h1 className="text-4xl font-extrabold tracking-tight lg:text-6xl max-w-4xl">
-                    Building <span className="text-primary">Intelligent Systems</span> for the Real World.
-                </h1>
-                <p className="max-w-[700px] text-xl text-muted-foreground leading-relaxed">
-                    I'm Abhishek Krishnan—a student, founder, and robotics engineer. I don't just write code; I build full-stack platforms, autonomous robots, and AI tools that solve tangible problems.
-                </p>
-                <div className="flex flex-wrap gap-4 mt-2">
-                    <Button asChild size="lg" className="rounded-full shadow-lg h-12 px-8 text-lg">
-                        <Link href="/projects">
-                            Explore Work <ArrowRight className="ml-2 h-5 w-5" />
+            <section className="flex flex-col lg:flex-row items-center justify-between gap-12 py-12 md:py-20">
+                <div className="flex flex-col items-start gap-6 flex-1 order-2 lg:order-1">
+                    <h1 className="text-4xl font-extrabold tracking-tight lg:text-6xl max-w-4xl">
+                        Building <span className="text-primary">Intelligent Systems</span> for the Real World.
+                    </h1>
+                    <p className="max-w-[700px] text-xl text-muted-foreground leading-relaxed">
+                        I'm Abhishek Krishnan—a student, founder, and robotics engineer. I don't just write code; I build full-stack platforms, autonomous robots, and AI tools that solve tangible problems.
+                    </p>
+                    <div className="flex flex-wrap gap-4 mt-2">
+                        <Button asChild size="lg" className="rounded-full shadow-lg h-12 px-8 text-lg">
+                            <Link href="/projects">
+                                Explore Work <ArrowRight className="ml-2 h-5 w-5" />
+                            </Link>
+                        </Button>
+                        <Button asChild variant="outline" size="lg" className="rounded-full h-12 px-8 text-lg">
+                            <Link href="/contact">Get in Touch</Link>
+                        </Button>
+                    </div>
+                    {/* Social Links */}
+                    <div className="flex items-center gap-4 pt-4">
+                        <Link
+                            href="https://github.com/Abhishek3141"
+                            target="_blank"
+                            className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                        >
+                            <Github className="h-5 w-5" />
+                            <span className="text-sm font-medium">GitHub</span>
                         </Link>
-                    </Button>
-                    <Button asChild variant="outline" size="lg" className="rounded-full h-12 px-8 text-lg">
-                        <Link href="/contact">Get in Touch</Link>
-                    </Button>
+                        <span className="text-muted-foreground">•</span>
+                        <Link
+                            href="https://www.linkedin.com/in/abhishek-krishnan3141"
+                            target="_blank"
+                            className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                        >
+                            <Linkedin className="h-5 w-5" />
+                            <span className="text-sm font-medium">LinkedIn</span>
+                        </Link>
+                    </div>
                 </div>
-                {/* Social Links */}
-                <div className="flex items-center gap-4 pt-4">
-                    <Link
-                        href="https://github.com/Abhishek3141"
-                        target="_blank"
-                        className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-                    >
-                        <Github className="h-5 w-5" />
-                        <span className="text-sm font-medium">GitHub</span>
-                    </Link>
-                    <span className="text-muted-foreground">•</span>
-                    <Link
-                        href="https://www.linkedin.com/in/abhishek-krishnan3141"
-                        target="_blank"
-                        className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-                    >
-                        <Linkedin className="h-5 w-5" />
-                        <span className="text-sm font-medium">LinkedIn</span>
-                    </Link>
-                </div>
+
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5 }}
+                    className="relative w-64 h-64 md:w-80 md:h-80 lg:w-[400px] lg:h-[400px] shrink-0 order-1 lg:order-2"
+                >
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl -rotate-6 scale-95" />
+                    <div className="absolute inset-0 border-2 border-primary/20 rounded-3xl rotate-3 scale-95" />
+                    <div className="relative w-full h-full rounded-3xl overflow-hidden border border-border shadow-2xl">
+                        <Image
+                            src="/Portfolio Pic.png"
+                            alt="Abhishek Krishnan"
+                            fill
+                            className="object-cover hover:scale-105 transition-transform duration-500"
+                            priority
+                        />
+                    </div>
+                </motion.div>
             </section>
 
             {/* Values Section */}

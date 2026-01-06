@@ -5,7 +5,6 @@ import { useFrame } from "@react-three/fiber"
 import { Html, Text } from "@react-three/drei"
 import * as THREE from "three"
 import { useRouter } from "next/navigation"
-import { motion } from "framer-motion-3d"
 
 interface MindNodeProps {
     position: [number, number, number]
