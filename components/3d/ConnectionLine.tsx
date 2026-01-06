@@ -22,8 +22,8 @@ export function ConnectionLine({ start, end }: ConnectionLineProps) {
     }, [points])
 
     return (
-        <line geometry={geometry}>
-            <lineBasicMaterial attach="material" color="#cbd5e1" linewidth={1} transparent opacity={0.5} />
-        </line>
+        <lineSegments geometry={geometry}>
+            <lineBasicMaterial color="#cbd5e1" linewidth={1} transparent opacity={0.5} />
+        </lineSegments>
     )
 }
